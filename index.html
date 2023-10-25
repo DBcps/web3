@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #9EDDFF;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #6499E9;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+
+        .navbar-brand img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .container.content {
+            background-color: #9EDDFF;
+            padding: 20px;
+        }
+
+        .card {
+            margin-top: 20px;
+            border: none;
+            border-radius: 15px;
+            background-color: #f7f7f7;
+        }
+
+        .btn-primary {
+            background-color: #007BFF;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            background-color: #BEFFF7;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="https://manatec.in" target="_blank">
+                <img src="navbar-logo.jpg" alt="Company Logo" class="img-fluid">
+                Manatec Support Page
+            </a>
+        </div>
+    </nav>
+
+    <div class="container content">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <form onsubmit="return validateLoginForm();">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                                <div id="username-error" class="text-danger"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                                <div id="password-error" class="text-danger"></div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                                <p class="mt-2"><a href="#" data-toggle="modal" data-target="#forgotPasswordModal">Forgot Password?</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img src="company-logo.jpg" class="img-fluid" alt="Company Logo">
+
+    <footer class="footer">
+        <p>&copy; 2023 Manatec Electronics. All rights reserved. | Email: <a href="mailto:support@manatec.in">support@manatec.in</a> | Phone: +91 (123) 456-7890</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        function validateLoginForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var usernameError = document.getElementById("username-error");
+            var passwordError = document.getElementById("password-error");
+
+            usernameError.textContent = "";
+            passwordError.textContent = "";
+
+            if (username === "") {
+                usernameError.textContent = "Username is required.";
+                return false;
+            }
+
+            if (password === "") {
+                passwordError.textContent = "Password is required.";
+                return false;
+            }
+
+            // Validation successful, redirect to home.html
+            window.location.href = "home.html";
+            return false;
+        }
+    </script>
+
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="return validateForgotPasswordForm();">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                            <div id="email-error" class="text-danger"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username-forgot">Username</label>
+                            <input type="text" class="form-control" id="username-forgot" placeholder="Enter your username">
+                            <div id="username-forgot-error" class="text-danger"></div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateForgotPasswordForm() {
+            var email = document.getElementById("email").value;
+            var username = document.getElementById("username-forgot").value;
+
+            var emailError = document.getElementById("email-error");
+            var usernameError = document.getElementById("username-forgot-error");
+
+            emailError.textContent = "";
+            usernameError.textContent = "";
+
+            if (email === "") {
+                emailError.textContent = "Email is required.";
+                return false;
+            }
+
+            if (username === "") {
+                usernameError.textContent = "Username is required.";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #9EDDFF !important;
+}
+
+.navbar {
+    background-color: #6499E9;
+    color: white;
+}
+
+.carousel-item img {
+    height: 100vh;
+    object-fit: cover;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+    background-color: #9EDDFF;
+}
+
+.footer {
+    background-color: #BEFFF7;
+    padding: 15px 0;
+    color: #333;
+    font-size: 14px;
+}
