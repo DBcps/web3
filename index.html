@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="home-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css"> <!-- Add AOS styles -->
     <title>Login Page</title>
     <style>
         body {
@@ -15,6 +17,11 @@
 
         .navbar {
             background-color: #6499E9;
+            transition: background-color 0.5s; /* Navbar background color transition */
+        }
+
+        .navbar.scrolled {
+            background-color: #335EAB; /* New background color on scroll */
         }
 
         .navbar-brand {
@@ -45,6 +52,7 @@
             background-color: #007BFF;
             border: none;
             width: 100%;
+            transition: background-color 0.3s ease-in-out; /* Button color transition */
         }
 
         .btn-primary:hover {
@@ -55,6 +63,13 @@
             background-color: #BEFFF7;
             text-align: center;
             padding: 20px 0;
+        }
+
+        /* Add animations using AOS */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s, transform 0.7s;
         }
     </style>
 </head>
@@ -68,7 +83,8 @@
         </div>
     </nav>
 
-    <div class="container content">
+    <!-- Animated content using AOS -->
+    <div class="container content" data-aos="fade-up">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="card border-0">
@@ -95,15 +111,29 @@
         </div>
     </div>
 
-    <img src="company-logo.jpg" class="img-fluid" alt="Company Logo">
-
     <footer class="footer">
         <p>&copy; 2023 Manatec Electronics. All rights reserved. | Email: <a href="mailto:support@manatec.in">support@manatec.in</a> | Phone: +91 (123) 456-7890</p>
     </footer>
 
+    <!-- Add AOS and jQuery scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS for scroll animations
+        AOS.init();
+
+        // Navbar background change on scroll
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(document).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
+            });
+        });
+
         function validateLoginForm() {
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
@@ -130,6 +160,7 @@
         }
     </script>
 
+    <!-- Modal for Forgot Password -->
     <div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -181,6 +212,7 @@
                 return false;
             }
 
+            // Validation successful, implement your logic here
             return true;
         }
     </script>
